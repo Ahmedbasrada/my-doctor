@@ -1,0 +1,21 @@
+const { Sequelize } = require('sequelize');
+const db = require('./database')
+const User = require('./user')
+const Profile = require('./profile')
+
+// هذه الصفحه لربط
+// User
+// و 
+// profile
+
+const models = {
+    User: User,
+    Profile: Profile
+}
+
+Object.keys(models).forEach(key => {
+    if ('associate' in models[key]) {
+        models[key].associate(models)
+    }
+})
+module.exports = models
